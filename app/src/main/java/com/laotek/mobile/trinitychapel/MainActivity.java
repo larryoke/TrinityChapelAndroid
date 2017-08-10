@@ -35,10 +35,31 @@ public class MainActivity extends Activity {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
 
+
+
+            webView.setBackgroundColor(0);
+            webView.setBackgroundResource(R.drawable.theyearofprogress);
+
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.getSettings().setLoadsImagesAutomatically(true);
+            webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+            webView.getSettings().setAppCacheEnabled(false);
+            webView.getSettings().setLoadWithOverviewMode(true);
+            //webView.getSettings().setPluginsEnabled(true);
+            //webView.getSettings().setPluginState(PluginState.ON);
+            webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+            webView.setScrollbarFadingEnabled(false);
+
+
+
+
             WebViewClientImpl webViewClient = new WebViewClientImpl(this);
             webView.setWebViewClient(webViewClient);
 
             webView.addJavascriptInterface(new AppJavaScriptProxy(this), "androidAppProxy");
+
+
+
 
             webView.loadUrl(URL);
         }
